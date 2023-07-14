@@ -47,6 +47,7 @@ STEP BY STEP PROCESS
 
 Remember, the specifics might change depending on the available data and the specific requirements of the project.
 
+
 Data Preparation:
 
 Goal and Problem Statement for the First Set of SQL Commands:
