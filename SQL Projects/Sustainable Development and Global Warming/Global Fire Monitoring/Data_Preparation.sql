@@ -2,6 +2,8 @@
 
 -- The given code is creating two database tables for storing data related to NASA observations and locations.
 
+-- THE FIRST SET
+
 CREATE TABLE nasa.observation (
     brightness DOUBLE,
     scan DOUBLE,
@@ -38,6 +40,8 @@ INTO TABLE nasa.location
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+
+-- THE SECOND SET
 
 -- The script alters the 'nasa' schema by removing specific columns and foreign key constraints, modifying the structure of 'observation' and 'location' tables.
 
