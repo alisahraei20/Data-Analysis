@@ -99,3 +99,4 @@ Both of these tables collectively create a structured environment for storing an
 
 ![WhatsApp Image 2023-07-15 at 10 06 47 PM](https://github.com/alisahraei20/Data-Analysis/assets/134171185/bc67272a-621c-4265-bc22-d6009bd8a06f)
 
+### https://www.kaggle.com/datasets/brsdincer/leo-satellite-global-fire-data-1-year-nasa
