@@ -92,3 +92,10 @@ This table is dedicated to storing data related to the locations of the fire obs
 - `daynight` (data type: TEXT): This column specifies whether the observation was made during the day or at night.
 
 Both of these tables collectively create a structured environment for storing and organizing data pertinent to NASA's fire observations and their corresponding locations. This architecture aids in efficient querying, data integrity, and analysis.
+
+
+
+# Output of the code
+
+![WhatsApp Image 2023-07-15 at 10 06 47 PM](https://github.com/alisahraei20/Data-Analysis/assets/134171185/bc67272a-621c-4265-bc22-d6009bd8a06f)
+
