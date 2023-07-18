@@ -1,4 +1,4 @@
-# Constructing a Customer Profile Table from Multiple Data Sources
+# Constructing a Customer Profile Table from Multiple Data Sources - Microsoft AdventureWorks database 2022
 
 ## Problem Statement
 In order to gain valuable insights into customer profiles and purchasing behaviors, it is necessary to analyze the AdventureWorks database. The database contains information about customers, sales orders, and products. However, extracting meaningful information from this extensive dataset can be challenging without appropriate analysis.
