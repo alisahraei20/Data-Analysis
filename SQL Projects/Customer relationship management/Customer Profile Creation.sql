@@ -12,7 +12,7 @@ CREATE TABLE #CustomerProfiles
   TotalSpent money,
   NumOrders int,
   MostPurchasedProduct int
-Maxunitpricemostpurchasedproduct double
+
 );
 
 -- Populate the table with customer data
@@ -22,20 +22,19 @@ SELECT
     P.FirstName, 
     P.LastName,
     P.EmailPromotion,
-
-   TotalSpent=  (SELECT SUM(SOH.SubTotal) 
+    (SELECT SUM(SOH.SubTotal) 
      FROM Sales.SalesOrderHeader SOH 
-    WHERE C.CustomerID = SOH.CustomerID) AS TotalSpent,
-
-    (SELECT COUNT(DISTINCT SOH.SalesOrderID) 
+     WHERE C.CustomerID = SOH.CustomerID) AS TotalSpent,
+    (SELECT COUNT( distinct SOH.SalesOrderID) 
      FROM Sales.SalesOrderHeader SOH 
      WHERE C.CustomerID = SOH.CustomerID) AS NumOrders,
-
-    (SELECT TOP 1 SOD.ProductID  
+    (SELECT TOP 1 SOD.ProductID 
      FROM Sales.SalesOrderHeader SOH 
      JOIN Sales.SalesOrderDetail SOD ON SOH.SalesOrderID = SOD.SalesOrderID
      WHERE SOH.CustomerID = C.CustomerID
-     GROUP BY SOD.ProductID   
+     GROUP BY SOD.ProductID 
      ORDER BY COUNT(*) DESC) AS MostPurchasedProduct
 FROM Sales.Customer C
 JOIN Person.Person P ON C.PersonID = P.BusinessEntityID;
+
+select * from #CustomerProfiles;
