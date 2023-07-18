@@ -18,16 +18,20 @@ CREATE TABLE #CustomerProfiles
 -- Populate the table with customer data
 INSERT INTO #CustomerProfiles
 SELECT 
+  
     C.CustomerID, 
     P.FirstName, 
     P.LastName,
     P.EmailPromotion,
+  
     (SELECT SUM(SOH.SubTotal) 
      FROM Sales.SalesOrderHeader SOH 
      WHERE C.CustomerID = SOH.CustomerID) AS TotalSpent,
+  
     (SELECT COUNT( distinct SOH.SalesOrderID) 
      FROM Sales.SalesOrderHeader SOH 
      WHERE C.CustomerID = SOH.CustomerID) AS NumOrders,
+  
     (SELECT TOP 1 SOD.ProductID 
      FROM Sales.SalesOrderHeader SOH 
      JOIN Sales.SalesOrderDetail SOD ON SOH.SalesOrderID = SOD.SalesOrderID
