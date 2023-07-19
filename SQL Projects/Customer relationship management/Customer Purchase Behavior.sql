@@ -1,4 +1,4 @@
-                                    -- Customer Purchase Behavior
+                                    -- Customer Purchase Behavior - Microsoft AdventureWorks database 2022
 
 use adventureworks2022;
 
