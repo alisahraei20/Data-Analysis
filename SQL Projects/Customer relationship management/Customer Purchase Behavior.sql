@@ -55,6 +55,7 @@ SELECT
         ELSE 'Infrequent buyer'
     END AS BuyingFrequencyCategory,
     TotalSpent / NULLIF(NumOrders, 0) AS AvgOrderValue,
+  
     (SELECT TOP 1 PC.Name
      FROM Sales.SalesOrderDetail SOD
      JOIN Production.Product P ON SOD.ProductID = P.ProductID
@@ -63,6 +64,7 @@ SELECT
      WHERE SOD.SalesOrderID IN (SELECT SalesOrderID FROM Sales.SalesOrderHeader WHERE CustomerID = CP.CustomerID)
      GROUP BY PC.Name
      ORDER BY COUNT(*) DESC) AS MostPreferredProductCategory,
+  
     DATEDIFF(DAY, (SELECT MAX(OrderDate) FROM Sales.SalesOrderHeader WHERE CustomerID = CP.CustomerID), GETDATE()) AS DaysSinceLastPurchase,
     CASE 
         WHEN CP.EmailPromotion = 0 THEN 'No email promotion'
@@ -74,6 +76,7 @@ SELECT
               WHERE CustomerID = CP.CustomerID AND OrderDate >= DATEADD(MONTH, -6, GETDATE())
              ) 
     END AS EmailPromotionEffectiveness,
+  
     (SELECT TOP 1 CASE
                      WHEN SOD.OrderQty > 10 THEN 'Bulk buyer'
                      WHEN SOD.OrderQty between 5 and 10 THEN 'Medium quantity buyer'
@@ -84,6 +87,7 @@ SELECT
      WHERE SOD.SalesOrderID IN (SELECT SalesOrderID FROM Sales.SalesOrderHeader WHERE CustomerID = CP.CustomerID)
      GROUP BY SOD.OrderQty
      ORDER BY COUNT(*) DESC) AS OrderSizePreference,
+  
     (SELECT TOP 1 DATENAME(WEEKDAY, SOH.OrderDate)
      FROM Sales.SalesOrderHeader SOH
      WHERE SOH.CustomerID = CP.CustomerID
