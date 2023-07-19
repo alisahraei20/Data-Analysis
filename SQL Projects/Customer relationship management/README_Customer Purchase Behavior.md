@@ -60,7 +60,7 @@ By accomplishing these objectives, businesses can gain valuable insights into cu
 At the end of this process, you should have a comprehensive view of each customer's purchasing behavior, allowing for more effective targeting in marketing efforts and potentially leading to increased customer satisfaction and sales.
 
 
-Output of the Code
+Output of the Code:
 
 ![WhatsApp Image 2023-07-19 at 11 47 39 PM](https://github.com/alisahraei20/Data-Analysis/assets/134171185/13a4e16d-0c81-479a-8555-531c5db6067c)
 
