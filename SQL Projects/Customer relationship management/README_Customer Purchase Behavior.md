@@ -1,8 +1,7 @@
+# Customer Segmentation based on Purchasing Behavior
 
 Problem Statement
 Understanding customer behavior and segmenting customers based on their purchasing patterns is crucial for businesses to tailor their marketing strategies and improve customer satisfaction. However, analyzing customer data from the AdventureWorks database to identify and categorize customers can be complex and time-consuming.
-# Customer Segmentation based on Purchasing Behavior
-
 
 ## Objectives
 The objectives of this code segment are as follows:
