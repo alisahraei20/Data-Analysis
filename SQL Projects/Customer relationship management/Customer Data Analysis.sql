@@ -3,6 +3,7 @@
 use adventureworks2022;
 
 -- Create a temporary table for customer profiles
+
 CREATE TABLE #CustomerProfiles
 (
   CustomerID int,
@@ -12,10 +13,10 @@ CREATE TABLE #CustomerProfiles
   TotalSpent money,
   NumOrders int,
   MostPurchasedProduct int
-
 );
 
 -- Populate the table with customer data
+
 INSERT INTO #CustomerProfiles
 SELECT 
     C.CustomerID, 
@@ -37,8 +38,8 @@ SELECT
 FROM Sales.Customer C
 JOIN Person.Person P ON C.PersonID = P.BusinessEntityID;
 
-
 -- Customer segmentation based on purchasing behavior
+
 SELECT
     CP.CustomerID,
     CP.TotalSpent,
@@ -107,9 +108,6 @@ SELECT
 FROM #CustomerProfiles CP;
 
 
--- NEXT
-
-
 -- Add customer geographical information
 ALTER TABLE #CustomerProfiles
 ADD Country nvarchar(50), State nvarchar(50), City nvarchar(50);
@@ -125,14 +123,15 @@ SET Country = (
         JOIN Sales.Customer C ON C.CustomerID = #CustomerProfiles.CustomerID
         WHERE C.PersonID = A.AddressID
     ),
+	
     State = (
         SELECT TOP 1 SP.Name
         FROM Person.Address A 
         JOIN Person.StateProvince SP ON A.StateProvinceID = SP.StateProvinceID
         JOIN Sales.Customer C ON C.CustomerID = #CustomerProfiles.CustomerID
         WHERE C.PersonID = A.AddressID
-
     ),
+	
     City = (
         SELECT TOP 1 A.City
         FROM Person.Address A 
@@ -140,7 +139,8 @@ SET Country = (
         WHERE C.PersonID = A.AddressID );
 
 -- Identify top buyers in each state
-;WITH StateTopBuyers AS (
+
+WITH StateTopBuyers AS (
     SELECT 
         State,
         CustomerID,
@@ -155,6 +155,7 @@ FROM StateTopBuyers STB
 WHERE STB.SpenderRank <= 3;
 
 -- Identify preferred product category per state
+
 SELECT
     CP.State,
     PC.Name AS PreferredProductCategory
@@ -172,9 +173,6 @@ JOIN (
     GROUP BY SOH.CustomerID, PS.ProductCategoryID
 ) PCat ON CP.CustomerID = PCat.CustomerID AND PCat.rn = 1
 JOIN Production.ProductCategory PC ON PC.ProductCategoryID = PCat.ProductCategoryID;
-
-
-
 
 -- Identify top buyers in each state with additional insights
 
